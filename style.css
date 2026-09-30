@@ -1,3 +1,21 @@
+/* =========================
+   SpendWise Theme Variables
+   ========================= */
+
+:root {
+    --brand-color: #172554;
+    --accent-color: #2563eb;
+    --surface-color: #ffffff;
+    --background-color: #f4f6f8;
+    --primary-text: #222222;
+    --secondary-text: #666666;
+}
+
+
+/* =========================
+   Basic Reset
+   ========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +24,31 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    color: #222;
+    background-color: var(--background-color);
+    color: var(--primary-text);
 }
 
-/* Main dashboard uses CSS Grid */
+
+/* =========================
+   Overall Page Layout
+   CSS GRID
+   ========================= */
+
 .dashboard {
     display: grid;
     grid-template-columns: 240px 1fr;
     min-height: 100vh;
 }
 
-/* Sidebar */
+
+/* =========================
+   Sidebar
+   FLEXBOX
+   ========================= */
+
 .sidebar {
-    background-color: #172554;
-    color: white;
+    background-color: var(--brand-color);
+    color: var(--surface-color);
     padding: 30px 20px;
 }
 
@@ -29,6 +57,7 @@ body {
     font-size: 24px;
 }
 
+/* Flexbox for sidebar items */
 .sidebar nav {
     display: flex;
     flex-direction: column;
@@ -36,23 +65,35 @@ body {
 }
 
 .sidebar a {
-    color: white;
+    color: var(--surface-color);
     text-decoration: none;
     padding: 12px 15px;
     border-radius: 8px;
+    transition: background-color 250ms ease,
+                transform 250ms ease;
 }
 
 .sidebar a:hover,
-.sidebar a.active {
-    background-color: #2563eb;
+.sidebar a:focus {
+    background-color: var(--accent-color);
+    transform: translateX(3px);
 }
 
-/* Main content */
+
+/* =========================
+   Main Content
+   ========================= */
+
 .main-content {
     padding: 30px;
 }
 
-/* Header uses Flexbox */
+
+/* =========================
+   Header
+   FLEXBOX
+   ========================= */
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -65,17 +106,23 @@ body {
 }
 
 .header p {
-    color: #666;
+    color: var(--secondary-text);
 }
 
 .profile {
-    background-color: white;
+    background-color: var(--surface-color);
+    color: var(--primary-text);
     padding: 12px 20px;
     border-radius: 8px;
     font-weight: bold;
 }
 
-/* Summary cards */
+
+/* =========================
+   Summary Cards
+   CSS GRID
+   ========================= */
+
 .summary {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -84,14 +131,14 @@ body {
 }
 
 .summary div {
-    background-color: white;
+    background-color: var(--surface-color);
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .summary p {
-    color: #666;
+    color: var(--secondary-text);
     margin-bottom: 10px;
 }
 
@@ -99,25 +146,53 @@ body {
     font-size: 24px;
 }
 
-/* Category section */
+
+/* =========================
+   Category Section
+   ========================= */
+
 .section-title {
     margin-bottom: 20px;
 }
 
-/* CSS Grid for category cards */
+
+/* =========================
+   Category Grid
+   CSS GRID
+   ========================= */
+
 .category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
+
+/* =========================
+   Dashboard Cards
+   FLEXBOX + MICRO-INTERACTIONS
+   ========================= */
+
 .card {
-    background-color: white;
+    background-color: var(--surface-color);
+    color: var(--primary-text);
     padding: 25px;
     border-radius: 12px;
+
+    /* Initial shadow */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    /* Animation */
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease;
+
+    /* Allows keyboard focus */
+    outline: none;
 }
 
+
+/* Flexbox inside each card */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -125,12 +200,32 @@ body {
     margin-bottom: 20px;
 }
 
+
+/* Hover interaction */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Keyboard focus interaction */
+.card:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+}
+
+
+/* Make category cards keyboard accessible */
+.card[tabindex="0"] {
+    cursor: pointer;
+}
+
 .card-header span {
     font-size: 28px;
 }
 
 .card p {
-    color: #666;
+    color: var(--secondary-text);
     margin-bottom: 8px;
 }
 
@@ -138,14 +233,26 @@ body {
     font-size: 22px;
 }
 
-/* Responsive design */
-@media (max-width: 900px) {
+
+/* =========================
+   Responsive Design
+   Below 768px
+   ========================= */
+
+@media (max-width: 767px) {
+
+    /* Single-column page layout */
     .dashboard {
         grid-template-columns: 1fr;
     }
 
+    /* Sidebar becomes part of the single column */
     .sidebar {
         padding: 20px;
+    }
+
+    .sidebar h1 {
+        margin-bottom: 20px;
     }
 
     .sidebar nav {
@@ -153,27 +260,47 @@ body {
         flex-wrap: wrap;
     }
 
-    .summary {
-        grid-template-columns: 1fr;
+    .sidebar a {
+        flex: 1 1 auto;
+        text-align: center;
     }
 
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
     .main-content {
         padding: 20px;
     }
 
+    /* Header becomes vertical */
     .header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
+    /* Summary becomes one column */
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    /* Category cards become one column */
     .category-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   Stretch Goal:
+   Dark Theme
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+        --brand-color: #0f172a;
+        --accent-color: #60a5fa;
+        --surface-color: #1e293b;
+        --background-color: #0f172a;
+        --primary-text: #f8fafc;
+        --secondary-text: #cbd5e1;
     }
 }
