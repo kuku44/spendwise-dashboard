@@ -5,72 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpendWise Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="dashboard">
 
-        <aside class="sidebar">
-            <h1>SpendWise</h1>
+    <header>
+        <h1>SpendWise</h1>
+        <p>Smart budgeting made simple</p>
+    </header>
 
-            <nav>
-                <a href="#">Dashboard</a>
-                <a href="#">Expenses</a>
-                <a href="#">Budget</a>
-                <a href="#">Savings</a>
-            </nav>
-        </aside>
+    <main>
+        <section class="dashboard">
+            <div class="card">
+                <h2>Food</h2>
+                <p>Track your food expenses.</p>
+            </div>
 
-        <main class="main-content">
+            <div class="card">
+                <h2>Transport</h2>
+                <p>Track your transport expenses.</p>
+            </div>
 
-            <header class="header">
-                <div>
-                    <h2>Budget Dashboard</h2>
-                    <p>Track your spending and manage your budget.</p>
-                </div>
-            </header>
+            <div class="card">
+                <h2>Rent</h2>
+                <p>Track your rent expenses.</p>
+            </div>
 
-            <section class="cards">
+            <div class="card">
+                <h2>Entertainment</h2>
+                <p>Track entertainment expenses.</p>
+            </div>
 
-                <article class="card">
-                    <h3>Food</h3>
-                    <p>KSh 0</p>
-                </article>
+            <div class="card">
+                <h2>Savings</h2>
+                <p>Track your savings.</p>
+            </div>
 
-                <article class="card">
-                    <h3>Transport</h3>
-                    <p>KSh 0</p>
-                </article>
+            <div class="card">
+                <h2>Utilities</h2>
+                <p>Track utility expenses.</p>
+            </div>
+        </section>
+    </main>
 
-                <article class="card">
-                    <h3>Rent</h3>
-                    <p>KSh 0</p>
-                </article>
-
-                <article class="card">
-                    <h3>Entertainment</h3>
-                    <p>KSh 0</p>
-                </article>
-
-                <article class="card">
-                    <h3>Savings</h3>
-                    <p>KSh 0</p>
-                </article>
-
-                <article class="card">
-                    <h3>Utilities</h3>
-                    <p>KSh 0</p>
-                </article>
-
-            </section>
-
-            <section class="summary">
-                <h2>Budget Summary</h2>
-                <p>Open the browser console to see your calculated budget results.</p>
-            </section>
-
-        </main>
-    </div>
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>

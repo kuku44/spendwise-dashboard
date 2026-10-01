@@ -1,36 +1,75 @@
-// SpendWise Budget Data
+// SpendWise JavaScript Foundation
 
-let budget = 50000;
-let expenses = 15000;
+// Application variables
+let budget = 0;
+let totalExpenses = 0;
+let remainingBalance = 0;
+
+// Expense variables
+let food = 0;
+let transport = 0;
+let rent = 0;
+let entertainment = 0;
+let savings = 0;
+let utilities = 0;
+
+
+// Function to calculate total expenses
+function calculateTotalExpenses() {
+    totalExpenses =
+        food +
+        transport +
+        rent +
+        entertainment +
+        savings +
+        utilities;
+
+    return totalExpenses;
+}
+
 
 // Function to calculate remaining balance
-function calculateBalance(budget, expenses) {
-    return budget - expenses;
+function calculateRemainingBalance() {
+    remainingBalance = budget - calculateTotalExpenses();
+
+    return remainingBalance;
 }
 
-// Function to display budget results in the console
-function displayResults(budget, expenses) {
-    const remainingBalance = calculateBalance(budget, expenses);
 
-    console.log("===== SpendWise Budget Summary =====");
-    console.log("Total Budget: KSh " + budget);
-    console.log("Total Expenses: KSh " + expenses);
-    console.log("Remaining Balance: KSh " + remainingBalance);
-}
+// Collect budget from the user
+let budgetInput = prompt("Enter your monthly budget:");
 
-// Collect budget information from the user
-let userBudget = prompt("Enter your total budget:");
+// Convert the input from text to a number
+budget = Number(budgetInput);
 
-if (userBudget !== null && userBudget !== "") {
-    budget = Number(userBudget);
-}
 
-// Collect expense information from the user
-let userExpenses = prompt("Enter your total expenses:");
+// Collect expenses from the user
+food = Number(prompt("Enter your food expenses:"));
 
-if (userExpenses !== null && userExpenses !== "") {
-    expenses = Number(userExpenses);
-}
+transport = Number(prompt("Enter your transport expenses:"));
 
-// Perform the calculation and display the result
-displayResults(budget, expenses);
+rent = Number(prompt("Enter your rent expenses:"));
+
+entertainment = Number(prompt("Enter your entertainment expenses:"));
+
+savings = Number(prompt("Enter your savings:"));
+
+utilities = Number(prompt("Enter your utilities expenses:"));
+
+
+// Perform calculations
+calculateTotalExpenses();
+calculateRemainingBalance();
+
+
+// Display results in the browser console
+console.log("===== SpendWise Budget Report =====");
+console.log("Monthly Budget: $" + budget);
+console.log("Food Expenses: $" + food);
+console.log("Transport Expenses: $" + transport);
+console.log("Rent Expenses: $" + rent);
+console.log("Entertainment Expenses: $" + entertainment);
+console.log("Savings: $" + savings);
+console.log("Utilities: $" + utilities);
+console.log("Total Expenses: $" + totalExpenses);
+console.log("Remaining Balance: $" + remainingBalance);
