@@ -19,6 +19,7 @@ The following improvements were made to SpendWise:
 - Added budget warning and success messages.
 - Added a Clear All button.
 - Added responsive design for smaller screens.
+- Added robin list
 
 ## 1. Decision Making
 
